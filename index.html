@@ -27,6 +27,7 @@
             background-color: #ddd;
             border-radius: 25px;
             overflow: hidden;
+            margin: 0 auto;
         }
         .slider {
             position: absolute;
@@ -45,7 +46,7 @@
 
     <div class="container">
         <h1>Nota do Departamento</h1>
-        <div class="slider-container">
+        <div class="slider-container" id="sliderContainer">
             <div class="slider" id="slider" style="height: 0%;"></div>
         </div>
         <div class="note">
@@ -54,11 +55,31 @@
     </div>
 
     <script>
-        const sliderContainer = document.querySelector('.slider-container');
+        const sliderContainer = document.getElementById('sliderContainer');
         const slider = document.getElementById('slider');
         const noteValue = document.getElementById('noteValue');
+        let isDragging = false;
 
-        sliderContainer.addEventListener('mousemove', function(event) {
+        // Detecta o clique para começar a arrastar
+        sliderContainer.addEventListener('mousedown', function(event) {
+            isDragging = true;
+            updateSlider(event);
+        });
+
+        // Detecta quando solta o clique para parar de arrastar
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+        });
+
+        // Atualiza a barra de acordo com o movimento do mouse, se estiver arrastando
+        document.addEventListener('mousemove', function(event) {
+            if (isDragging) {
+                updateSlider(event);
+            }
+        });
+
+        // Função para calcular a altura da barra com base na posição do mouse
+        function updateSlider(event) {
             const rect = sliderContainer.getBoundingClientRect();
             const offsetY = event.clientY - rect.top;
             const height = rect.height;
@@ -69,7 +90,7 @@
             // A nota vai de 0 a 10
             const note = Math.round(percent / 10);
             noteValue.textContent = note;
-        });
+        }
     </script>
 
 </body>
