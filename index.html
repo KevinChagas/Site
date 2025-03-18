@@ -3,50 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite</title>
     <style>
         body { 
             text-align: center; 
             font-family: Arial, sans-serif; 
-            background-color: #e5c68d; /* Define o fundo da página */
+            background-color: #e5c68d; /* Cor do fundo */
+            padding-top: 50px;
         }
-        .imagem { 
-            cursor: pointer; 
-            width: 400px; 
-            max-width: 100%; 
-            margin-top: 50px;
+        
+        .card-container {
+            perspective: 1000px; /* Cria a sensação de profundidade */
+            display: inline-block;
         }
-        .modal { 
-            display: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(0, 0, 0, 0.5); 
+
+        .card {
+            width: 400px;
+            height: 300px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
         }
-        .modal-content { 
-            background: white; 
-            padding: 20px; 
-            margin: 10% auto; 
-            width: 50%; 
-            text-align: left; 
-            border-radius: 10px; 
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            position: absolute;
+            backface-visibility: hidden; /* Oculta a parte de trás da imagem */
         }
-        .fechar { 
-            cursor: pointer; 
-            float: right; 
-            font-size: 20px; 
-            font-weight: bold; 
+
+        .card .front {
+            z-index: 2; /* Garante que a frente da carta fique acima */
+        }
+
+        .card .back {
+            transform: rotateY(180deg); /* Gira a parte de trás para que ela fique oculta */
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg); /* Quando a carta "vira" */
         }
     </style>
 </head>
 <body>
-    <a href="https://forms.office.com/r/af22j7bf9y" target="_blank">
-        <img src="https://raw.githubusercontent.com/KevinChagas/Site/main/Convite.jpeg" class="imagem" alt="Convite">
-    </a>
+    <h1>Convite Especial</h1>
     
+    <!-- Container para a animação -->
+    <div class="card-container">
+        <div class="card" id="card">
+            <img src="https://raw.githubusercontent.com/KevinChagas/Site/main/Convite1.jpeg" class="front" alt="Convite 1">
+            <img src="https://raw.githubusercontent.com/KevinChagas/Site/main/Convite2.jpeg" class="back" alt="Convite 2" onclick="openForm()">
+        </div>
+    </div>
+
     <script>
-        // O formulário agora é aberto em uma nova aba ao clicar na imagem
+        // Função para virar o cartão ao clicar na frente
+        document.getElementById('card').addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
+
+        // Função para abrir o link após clicar na parte de trás do cartão
+        function openForm() {
+            window.open("https://forms.office.com/r/af22j7bf9y", "_blank");
+        }
     </script>
 </body>
 </html>
