@@ -6,23 +6,25 @@
     <title>Convite</title>
     <style>
         body { 
-            text-align: center; 
-            font-family: Arial, sans-serif; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
             background-color: #e5c68d; /* Cor do fundo */
-            padding-top: 50px;
         }
-        
+
         .card-container {
             perspective: 1000px; /* Cria a sensação de profundidade */
             display: inline-block;
         }
 
         .card {
-            width: 400px;
-            height: 300px;
+            width: 60vw; /* A imagem ocupará 60% da largura da tela */
+            height: 80vh; /* A altura será ajustada automaticamente */
             position: relative;
             transform-style: preserve-3d;
-            transition: transform 0.6s;
+            transition: transform 1s; /* Alterei a duração para 1 segundo */
             cursor: pointer;
         }
 
@@ -43,13 +45,11 @@
         }
 
         .card.flipped {
-            transform: rotateY(180deg); /* Quando a carta "vira" */
+            transform: rotateY(360deg); /* Faz o cartão girar 360 graus */
         }
     </style>
 </head>
 <body>
-    <h1>Convite Especial</h1>
-    
     <!-- Container para a animação -->
     <div class="card-container">
         <div class="card" id="card">
