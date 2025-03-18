@@ -5,11 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convite</title>
     <style>
-        body { text-align: center; font-family: Arial, sans-serif; }
-        .imagem { cursor: pointer; width: 400px; max-width: 100%; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
-        .modal-content { background: white; padding: 20px; margin: 10% auto; width: 50%; text-align: left; border-radius: 10px; }
-        .fechar { cursor: pointer; float: right; font-size: 20px; font-weight: bold; }
+        body { 
+            text-align: center; 
+            font-family: Arial, sans-serif; 
+            background-color: #e5c68d; /* Define o fundo da página */
+        }
+        .imagem { 
+            cursor: pointer; 
+            width: 400px; 
+            max-width: 100%; 
+            margin-top: 50px;
+        }
+        .modal { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(0, 0, 0, 0.5); 
+        }
+        .modal-content { 
+            background: white; 
+            padding: 20px; 
+            margin: 10% auto; 
+            width: 50%; 
+            text-align: left; 
+            border-radius: 10px; 
+        }
+        .fechar { 
+            cursor: pointer; 
+            float: right; 
+            font-size: 20px; 
+            font-weight: bold; 
+        }
     </style>
 </head>
 <body>
@@ -25,8 +54,12 @@
     </div>
 
     <script>
-        function abrirFormulario() { document.getElementById('modal').style.display = 'block'; }
-        function fecharFormulario() { document.getElementById('modal').style.display = 'none'; }
+        function abrirFormulario() { 
+            document.getElementById('modal').style.display = 'block'; 
+        }
+        function fecharFormulario() { 
+            document.getElementById('modal').style.display = 'none'; 
+        }
     </script>
 </body>
 </html>
