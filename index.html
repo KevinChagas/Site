@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite</title>
     <style>
         body { 
             text-align: center; 
@@ -42,23 +43,12 @@
 </head>
 <body>
     <h1>Convite Especial</h1>
-    <img src="https://raw.githubusercontent.com/KevinChagas/Site/main/Convite.jpeg" class="imagem" onclick="abrirFormulario()" alt="Convite">
+    <a href="https://forms.office.com/r/af22j7bf9y" target="_blank">
+        <img src="https://raw.githubusercontent.com/KevinChagas/Site/main/Convite.jpeg" class="imagem" alt="Convite">
+    </a>
     
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <span class="fechar" onclick="fecharFormulario()">&times;</span>
-            <h2>Confirme sua Presença</h2>
-            <iframe src="https://forms.office.com/r/af22j7bf9y" width="100%" height="500px"></iframe>
-        </div>
-    </div>
-
     <script>
-        function abrirFormulario() { 
-            document.getElementById('modal').style.display = 'block'; 
-        }
-        function fecharFormulario() { 
-            document.getElementById('modal').style.display = 'none'; 
-        }
+        // O formulário agora é aberto em uma nova aba ao clicar na imagem
     </script>
 </body>
 </html>
