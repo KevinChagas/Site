@@ -1,97 +1,29 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nota do Departamento</title>
+    <title>Convite</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-        }
-        h1 {
-            margin-bottom: 20px;
-        }
-        .slider-container {
-            position: relative;
-            width: 50px;
-            height: 300px;
-            background-color: #ddd;
-            border-radius: 25px;
-            overflow: hidden;
-            margin: 0 auto;
-        }
-        .slider {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background-color: #4CAF50;
-            border-radius: 25px;
-        }
-        .note {
-            margin-top: 20px;
-            font-size: 24px;
-        }
+        body { text-align: center; font-family: Arial, sans-serif; }
+        .imagem { cursor: pointer; width: 300px; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+        .modal-content { background: white; padding: 20px; margin: 10% auto; width: 50%; }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>Nota do Departamento</h1>
-        <div class="slider-container" id="sliderContainer">
-            <div class="slider" id="slider" style="height: 0%;"></div>
-        </div>
-        <div class="note">
-            Nota: <span id="noteValue">0</span>
+    <img src="imagem-do-convite.jpg" class="imagem" onclick="abrirFormulario()" alt="Convite">
+    
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span onclick="fecharFormulario()" style="cursor:pointer; float:right;">&times;</span>
+            <iframe src="https://docs.google.com/forms/d/e/SEU_FORMULARIO/viewform?embedded=true" width="100%" height="500px"></iframe>
         </div>
     </div>
 
     <script>
-        const sliderContainer = document.getElementById('sliderContainer');
-        const slider = document.getElementById('slider');
-        const noteValue = document.getElementById('noteValue');
-        let isDragging = false;
-
-        // Detecta o clique para começar a arrastar
-        sliderContainer.addEventListener('mousedown', function(event) {
-            isDragging = true;
-            updateSlider(event);
-        });
-
-        // Detecta quando solta o clique para parar de arrastar
-        document.addEventListener('mouseup', function() {
-            isDragging = false;
-        });
-
-        // Atualiza a barra de acordo com o movimento do mouse, se estiver arrastando
-        document.addEventListener('mousemove', function(event) {
-            if (isDragging) {
-                updateSlider(event);
-            }
-        });
-
-        // Função para calcular a altura da barra com base na posição do mouse
-        function updateSlider(event) {
-            const rect = sliderContainer.getBoundingClientRect();
-            const offsetY = event.clientY - rect.top;
-            const height = rect.height;
-            const percent = Math.min(Math.max(0, (height - offsetY) / height), 1) * 100;
-
-            slider.style.height = percent + '%';
-
-            // A nota vai de 0 a 10
-            const note = Math.round(percent / 10);
-            noteValue.textContent = note;
-        }
+        function abrirFormulario() { document.getElementById('modal').style.display = 'block'; }
+        function fecharFormulario() { document.getElementById('modal').style.display = 'none'; }
     </script>
-
 </body>
 </html>
